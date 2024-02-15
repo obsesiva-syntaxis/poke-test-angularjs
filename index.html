@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-csp.css" integrity="sha512-TSigfdiJq7G9AWJnE/8D3M/HcBs9wfKpbrCbMg4iSs8IRVujA854B5wd/glfPzBRaeqiLLz1jHm6swYsci2txQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 </head>
+
 <body>
     <main class="poke-list" ng-app="pokeList" ng-controller="pokeListController">
         <div class="poke-list__main">
             <div class="poke-list__main-title">
                 <h1>poke list</h1>
-                <input ng-model="filter" type="text" placeholder="Filtrar">
-            </div>
-            <div class="poke-list__main-list">
-                <div class="poke-list__main-list-item" ng-repeat="i in items | filter: filter">
-                    <div ng-click="pokeName = 'i'">{{ i }}</div>
+                <div>
+                    <input class="form-control" name="pokemon" id="pokemon" ng-model="pokemon" type="text" placeholder="Filtrar"
+                        ng-keyup="complete(pokemon)" ng-blur="blur()">
+                    <ul class="list-group" ng-model="hidethis" ng-hide="hidethis">
+                        <li class="list-group-item" ng-repeat="poke in filterPoke" ng-click="fillTextbox(poke)">{{ poke }}</li>
+                    </ul>
                 </div>
             </div>
-            <div ng-if="false" class="poke-list__main-detail" >
-                
+            <div class="poke-list__main-list">
+                <div class="poke-list__main-list-item" ng-repeat="i in items | filter: pokemon">
+                    <div ng-click="selected(i)">{{ i }}</div>
+                </div>
+            </div>
+            <div ng-if="details()" class="poke-list__main-detail">
+
             </div>
         </div>
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap.js" integrity="sha512-3z5zbCPEG7DvKKz46yvPmKL+w+UDfwY0f2YWFVIwBb+2Y4E23jTZHZxG+naAiTllvMNQAhapPDKGHBT7V3fQOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap.js"
+        integrity="sha512-3z5zbCPEG7DvKKz46yvPmKL+w+UDfwY0f2YWFVIwBb+2Y4E23jTZHZxG+naAiTllvMNQAhapPDKGHBT7V3fQOA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.js" integrity="sha512-Re9KhAaoh5qo/Cm/wtExVs7ETTKTx/81aXPHko2nWlUvTzELYhTwpp/DwUu+z8ul+DjtbJdPcmxEYwKewzG62w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.js"
+        integrity="sha512-Re9KhAaoh5qo/Cm/wtExVs7ETTKTx/81aXPHko2nWlUvTzELYhTwpp/DwUu+z8ul+DjtbJdPcmxEYwKewzG62w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="index.js"></script>
 </body>
+
 </html>
