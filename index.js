@@ -22,11 +22,27 @@ pokeApp.controller("pokeListController", function ($scope, $http) {
     }
 
     $scope.selected = function( pokemon ) {
+        $scope.selectedPokemon = {};
         const pokeUrl = allPokemons.find( element => element.name === pokemon).url;
+        let selectedPokemon = {};
         $http.get(pokeUrl).then( function( response ){ 
-            console.log( response.data ); 
+            console.log( response.data );
+            selectedPokemon = {
+                name: response.data.name,
+                weight: response.data.weight,
+                order: response.data.order,
+                height: response.data.height,
+            } 
+            $scope.selectedPokemon = selectedPokemon;
         });
+    }
 
+    $scope.details = function(){
+        if( $scope.selectedPokemon.length === 0 ){
+            return false;
+        } else {
+            return true;
+        }
     }
 
     $scope.blur = function() {

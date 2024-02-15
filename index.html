@@ -29,7 +29,10 @@
                 </div>
             </div>
             <div ng-if="details()" class="poke-list__main-detail">
-
+                <p>name: {{ selectedPokemon.name }}</p>
+                <p>height: {{ selectedPokemon.height }}</p>
+                <p>weight: {{ selectedPokemon.weight }}</p>
+                <p>order: {{ selectedPokemon.order }}</p>
             </div>
         </div>
     </main>
