@@ -3,7 +3,7 @@ const pokeApp = angular.module("pokeList", []);
 pokeApp.controller("pokeListController", function ($scope, $http) {
     let allPokemons = [];
     const pokeNameArr = [];
-    $http.get("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10").then(function (response) {
+    $http.get("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100").then(function (response) {
         response.data.results.map(poke => pokeNameArr.push(poke.name));
         allPokemons = response.data.results;
         console.log(pokeNameArr);
@@ -32,6 +32,7 @@ pokeApp.controller("pokeListController", function ($scope, $http) {
                 weight: response.data.weight,
                 order: response.data.order,
                 height: response.data.height,
+                img: response.data.sprites.front_default,
             } 
             $scope.selectedPokemon = selectedPokemon;
         });

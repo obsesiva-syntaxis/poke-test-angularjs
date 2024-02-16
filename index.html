@@ -14,12 +14,13 @@
     <main class="poke-list" ng-app="pokeList" ng-controller="pokeListController">
         <div class="poke-list__main">
             <div class="poke-list__main-title">
-                <h1>poke list</h1>
+                <h1>PokeDex</h1>
                 <div>
-                    <input class="form-control" name="pokemon" id="pokemon" ng-model="pokemon" type="text" placeholder="Filtrar"
-                        ng-keyup="complete(pokemon)" ng-blur="blur()">
-                    <ul class="list-group" ng-model="hidethis" ng-hide="hidethis">
-                        <li class="list-group-item" ng-repeat="poke in filterPoke" ng-click="fillTextbox(poke)">{{ poke }}</li>
+                    <input class="form-control" name="pokemon" id="pokemon" ng-model="pokemon" type="text"
+                        placeholder="Filtrar" ng-keyup="complete(pokemon)" ng-blur="blur()">
+                    <ul class="list-group" ng-model="hidethis" ng-hide="hidethis" style="color: black">
+                        <li class="list-group-item" ng-repeat="poke in filterPoke" ng-click="fillTextbox(poke)">{{ poke
+                            }}</li>
                     </ul>
                 </div>
             </div>
@@ -29,10 +30,17 @@
                 </div>
             </div>
             <div ng-if="details()" class="poke-list__main-detail">
-                <p>name: {{ selectedPokemon.name }}</p>
-                <p>height: {{ selectedPokemon.height }}</p>
-                <p>weight: {{ selectedPokemon.weight }}</p>
-                <p>order: {{ selectedPokemon.order }}</p>
+                <div class="poke-list__main-detail-card">
+                    <div>
+                        <img src="{{ selectedPokemon.img }}" alt="" srcset="">
+                    </div>
+                    <div>
+                        <p>name: {{ selectedPokemon.name }}</p>
+                        <p>height: {{ selectedPokemon.height }}</p>
+                        <p>weight: {{ selectedPokemon.weight }}</p>
+                        <p>order: {{ selectedPokemon.order }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

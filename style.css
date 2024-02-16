@@ -8,6 +8,8 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
 html {
     line-height: 1.15;
     /* 1 */
@@ -380,6 +382,9 @@ template {
 }
 
 .poke-list {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     width: 100vw;
     height: 100vh;
     background-color: rgb(37, 37, 37);
@@ -391,22 +396,24 @@ template {
 .poke-list__main {
     width: 600px;
     height: 600px;
-    background-color: white;
+    background-color: #cc322a;
     border-radius: 5px;
-
+    padding: 10px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: .1fr 1fr .fr;
+    grid-template-rows: .1fr 1fr .3fr;
 }
 
 .poke-list__main-title {
+    color: white;
     grid-column: 1/2;
     grid-row: 1/2;
     width: 100%;
-    height: 100%;
+    height: 100px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    overflow-y: auto;
 }
 
 .poke-list__main-list {
@@ -417,19 +424,20 @@ template {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    overflow-y: auto;
 }
 
 .poke-list__main-list-item {
     width: 100%;
-    height: 20px;
-    padding: 5px 0px 5px 0px;
-    background-color: rgb(241, 241, 241);
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #f1f1f1;
     transition: all .5s ease;
     cursor: pointer;
 }
 
 .poke-list__main-list-item:hover {
-    background-color: rgb(151, 151, 151);
+    background-color: #979797;
     transition: all .5s ease;
 }
 
@@ -438,5 +446,18 @@ template {
     grid-row: 3/4;
     width: 100%;
     height: 100%;
-    background-color: blueviolet;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.poke-list__main-detail-card {
+    width: 300px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f1f1f1;
+    
 }
